@@ -1,10 +1,13 @@
 import BtnLink from "@/components/BtnLink";
 import CardTitle from "@/components/CardTitle";
 import WorkSection from "@/components/WorkSection";
+import { getWorkEntries } from "@/lib/work";
 
 
 
 export default function Home() {
+  const workEntries = getWorkEntries().slice(0, 7);
+
   return (
     <>
       <div className=" h-dvh grid grid-cols-2 has-[section:last-child:hover]:[&>section:first-child]:brightness-45">
@@ -41,9 +44,15 @@ export default function Home() {
               </div>
     
         
-                <WorkSection linkText="The Mælstrøm — A symbol for an internal BB intiative exploring the depths of Web3."></WorkSection>
-                <WorkSection linkText="The Mælstrøm — A symbol for an internal BB intiative exploring the depths of Web3."></WorkSection>
-                <WorkSection linkText="The Mælstrøm — A symbol for an internal BB intiative exploring the depths of Web3."></WorkSection>
+                {workEntries.map((entry) => (
+                  <WorkSection
+                    key={entry.slug}
+                    linkText={entry.title}
+                    linkUrl={entry.postPage ? `/work/${entry.slug}/` : entry.link}
+                    imgUrl={entry.image}
+                    imageAlt={entry.imageAlt}
+                  />
+                ))}
           </div>
         </section>
       </div>
