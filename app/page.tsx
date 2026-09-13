@@ -10,7 +10,7 @@ export default function Home() {
     <main className="grid h-dvh min-h-0 grid-cols-1 overflow-hidden min-[835px]:grid-cols-2 min-[835px]:has-[section:last-child:hover]:[&>section:first-child]:brightness-45">
       <section className="grid h-full min-h-0 grid-rows-[minmax(0,3fr)_minmax(0,2fr)] gap-0.5 p-0.5 min-[835px]:grid-cols-[1fr_2fr] min-[835px]:grid-rows-[minmax(0,5fr)_minmax(0,7fr)] min-[835px]:gap-0 min-[835px]:pb-1 min-[835px]:pl-0.5 min-[835px]:pr-0 min-[835px]:pt-1">
         <div className="relative flex min-h-0 items-center justify-center rounded-2xl bg-[#FAF9F6] min-[835px]:col-span-2 min-[835px]:mb-0.5 min-[835px]:mr-0.5">
-          <div className="absolute inset-x-0 top-1">
+          <div className="absolute inset-x-0 top-1 min-[835px]:top-3">
             <CardTitle title="Information" />
           </div>
           <h1 className="w-full px-4 text-center text-3xl leading-tight text-black min-[835px]:px-0 min-[835px]:text-4xl min-[835px]:leading-normal">
