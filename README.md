@@ -42,13 +42,34 @@ postPage: false
 ---
 ```
 
-`title` and `date` (`YYYY-MM-DD`) are required. `image`, `imageAlt`, `link`, and `postPage` are optional; `postPage` defaults to `false`. The homepage displays the five newest entries. Entries with `postPage: true` also get static pages at `/work/<slug>/`, including entries older than the five shown on the homepage. Markdown bodies do not render raw HTML.
+`title` and `date` (`YYYY-MM-DD`) are required. `image`, `imageAlt`, `link`, and `postPage` are optional; `postPage` defaults to `false`. The homepage displays the seven newest entries. Entries with `postPage: true` also get static pages at `/work/<slug>/`, including entries older than the seven shown on the homepage. Markdown bodies do not render raw HTML.
 
 Put local work images in `public/images/work/`. Use [`templates/work-post.md`](templates/work-post.md) as a starting point. Content changes require a new build.
 
 ## Build and preview
 
 Run `pnpm build` to parse the Markdown, generate the static export in `out/`, and create all opted-in work pages. Use `pnpm dev` and [http://localhost:3000](http://localhost:3000) for local preview. The generated `out/` directory is intended for static hosting; `next start` is not compatible with `output: "export"`.
+
+## Reusable page shell
+
+Use `PageShell` for full-width content pages and export page-specific metadata from the route:
+
+```typescript
+import type { Metadata } from "next";
+import PageShell from "@/components/PageShell";
+
+export const metadata: Metadata = {
+  title: "Example | TNheous.com",
+};
+
+export default function ExamplePage() {
+  return (
+    <PageShell title="Example">
+      <p>Your page content goes here.</p>
+    </PageShell>
+  );
+}
+```
 
 ## Directory structure
 
@@ -64,6 +85,7 @@ Run `pnpm build` to parse the Markdown, generate the static export in `out/`, an
 ├── components/
 │   ├── BtnLink.tsx    # Reusable links
 │   ├── CardTitle.tsx  # Reusable card headings
+│   ├── PageShell.tsx  # Shared full-width page wrapper
 │   └── WorkSection.tsx # Project sections
 ├── content/work/      # Markdown work entries
 ├── lib/work.ts        # Filesystem loader and frontmatter parser

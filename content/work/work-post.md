@@ -7,8 +7,8 @@ link: https://example.com
 postPage: true
 ---
 
-Write the project entry in Markdown below the frontmatter.
+# Your project title
 
-The page title comes from frontmatter. Start body sections with `##` headings.
+Write the project entry in Markdown below the frontmatter.
 
 Save the file as `content/work/<slug>.md`. The filename becomes the slug. `title` and `date` are required; `image`, `imageAlt`, `link`, and `postPage` are optional. Set `postPage: true` to generate a detail page at `/work/<slug>/`. Put referenced local images in `public/images/work/`.
