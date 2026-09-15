@@ -11,7 +11,7 @@ export default function Home() {
       <section className="grid h-full min-h-0 grid-rows-[minmax(0,3fr)_minmax(0,2fr)] gap-0.5 p-0.5 min-[835px]:grid-cols-[1fr_2fr] min-[835px]:grid-rows-[minmax(0,5fr)_minmax(0,7fr)] min-[835px]:gap-0 min-[835px]:pb-1 min-[835px]:pl-0.5 min-[835px]:pr-0 min-[835px]:pt-1">
         <div className="relative flex min-h-0 items-center justify-center rounded-2xl bg-[#FAF9F6] min-[835px]:col-span-2 min-[835px]:mb-0.5 min-[835px]:mr-0.5">
           <div className="absolute inset-x-0 top-1 min-[835px]:top-3">
-            <CardTitle title="Information" />
+            <CardTitle title="At a glance" />
           </div>
           <h1 className="w-full px-4 text-center text-3xl leading-tight text-black min-[835px]:px-0 min-[835px]:text-4xl min-[835px]:leading-normal">
             T&apos;Nheous Smith <br /> Software Engineer <br /> Dallas, Texas
@@ -19,11 +19,11 @@ export default function Home() {
         </div>
 
         <div className="hidden rounded-2xl bg-[#FAF9F6] pb-6 pt-1 min-[835px]:col-start-2 min-[835px]:row-start-2 min-[835px]:mr-0.5 min-[835px]:block min-[835px]:min-h-0 min-[835px]:overflow-hidden min-[835px]:pb-0">
-          <CardTitle title="About" />
-          <p className="break-words px-4 pt-4 text-base font-medium leading-relaxed text-black min-[835px]:px-8 min-[835px]:pt-6 min-[835px]:indent-8 xl:text-xl xl:leading-normal">
+          <CardTitle title="whoami" />
+          <p className="wrap-break-word px-4 pt-4 text-base font-medium leading-relaxed text-black min-[835px]:px-8 min-[835px]:pt-6 min-[835px]:indent-8 xl:text-xl xl:leading-normal">
             T&apos;Nheous is a Dallas-based backend and full-stack software engineer with 9+ years of experience building enterprise applications, real-time data pipelines, and cloud systems across the energy and supply chain sectors.
           </p>
-          <p className="hidden break-words px-4 pt-4 text-base font-medium leading-relaxed text-black xl:block xl:px-8 xl:pt-6 xl:text-xl xl:leading-normal xl:indent-8">
+          <p className="hidden wrap-break-word px-4 pt-4 text-base font-medium leading-relaxed text-black xl:block xl:px-8 xl:pt-6 xl:text-xl xl:leading-normal xl:indent-8">
             Outside of engineering backend solutions, this site serves as a lab to prototype developer tools and validate independent software ideas. For inquiries, feel free to reach out via email.
           </p>
         </div>
