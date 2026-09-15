@@ -39,16 +39,17 @@ image: /images/work/project.png
 imageAlt: "Project preview"
 link: https://example.com
 postPage: false
+isBlog: false
 ---
 ```
 
-`title` and `date` (`YYYY-MM-DD`) are required. `image`, `imageAlt`, `link`, and `postPage` are optional; `postPage` defaults to `false`. The homepage displays the seven newest entries. Entries with `postPage: true` also get static pages at `/work/<slug>/`, including entries older than the seven shown on the homepage. Markdown bodies do not render raw HTML.
+`title` and `date` (`YYYY-MM-DD`) are required. `image`, `imageAlt`, `link`, `postPage`, and `isBlog` are optional; both booleans default to `false`. The homepage displays the seven newest entries. Entries with `postPage: true` get static pages at `/work/<slug>/`. Set both `postPage: true` and `isBlog: true` to use `/blog/<slug>/` instead. Opted-in entries are generated even when they are older than the seven shown on the homepage. Markdown bodies do not render raw HTML.
 
 Put local work images in `public/images/work/`. Use [`templates/work-post.md`](templates/work-post.md) as a starting point. Content changes require a new build.
 
 ## Build and preview
 
-Run `pnpm build` to parse the Markdown, generate the static export in `out/`, and create all opted-in work pages. Use `pnpm dev` and [http://localhost:3000](http://localhost:3000) for local preview. The generated `out/` directory is intended for static hosting; `next start` is not compatible with `output: "export"`.
+Run `pnpm build` to parse the Markdown, generate the static export in `out/`, and create all opted-in work and blog pages. Use `pnpm dev` and [http://localhost:3000](http://localhost:3000) for local preview. The generated `out/` directory is intended for static hosting; `next start` is not compatible with `output: "export"`.
 
 ## Reusable page shell
 
@@ -80,11 +81,14 @@ export default function ExamplePage() {
 │   ├── layout.tsx     # Shared layout and site metadata
 │   ├── globals.css    # Global styles
 │   ├── favicon.ico    # Site favicon
+│   ├── blog/[[...slug]]/ # Static Markdown blog pages
+│   │   └── page.tsx
 │   └── work/[[...slug]]/ # Static Markdown work pages
 │       └── page.tsx
 ├── components/
 │   ├── BtnLink.tsx    # Reusable links
 │   ├── CardTitle.tsx  # Reusable card headings
+│   ├── EntryDetail.tsx # Shared Markdown detail-page presentation
 │   ├── PageShell.tsx  # Shared full-width page wrapper
 │   └── WorkSection.tsx # Project sections
 ├── content/work/      # Markdown work entries

@@ -13,6 +13,7 @@ export type WorkEntry = {
   imageAlt?: string;
   link?: string;
   postPage: boolean;
+  isBlog: boolean;
   body: string;
 };
 
@@ -75,16 +76,20 @@ function readOptionalString(
   return trimmedValue === "" ? undefined : trimmedValue;
 }
 
-function readPostPage(data: Record<string, unknown>, fileName: string): boolean {
-  if (data.postPage === undefined) {
+function readOptionalBoolean(
+  data: Record<string, unknown>,
+  key: "postPage" | "isBlog",
+  fileName: string,
+): boolean {
+  if (data[key] === undefined) {
     return false;
   }
 
-  if (typeof data.postPage !== "boolean") {
-    throw metadataError(fileName, '"postPage" must be a boolean when provided.');
+  if (typeof data[key] !== "boolean") {
+    throw metadataError(fileName, `"${key}" must be a boolean when provided.`);
   }
 
-  return data.postPage;
+  return data[key];
 }
 
 function readWorkEntry(fileName: string): WorkEntry {
@@ -99,7 +104,8 @@ function readWorkEntry(fileName: string): WorkEntry {
     image: readOptionalString(data, "image", fileName),
     imageAlt: readOptionalString(data, "imageAlt", fileName),
     link: readOptionalString(data, "link", fileName),
-    postPage: readPostPage(data, fileName),
+    postPage: readOptionalBoolean(data, "postPage", fileName),
+    isBlog: readOptionalBoolean(data, "isBlog", fileName),
     body: parsedFile.content.trim(),
   };
 }
@@ -119,10 +125,15 @@ export function getWorkEntries(): WorkEntry[] {
     });
 }
 
-export function getPostWorkEntries(): WorkEntry[] {
-  return getWorkEntries().filter((entry) => entry.postPage);
+export function getPostEntries(isBlog: boolean): WorkEntry[] {
+  return getWorkEntries().filter(
+    (entry) => entry.postPage && entry.isBlog === isBlog,
+  );
 }
 
-export function getWorkEntry(slug: string): WorkEntry | undefined {
-  return getPostWorkEntries().find((entry) => entry.slug === slug);
+export function getPostEntry(
+  slug: string,
+  isBlog: boolean,
+): WorkEntry | undefined {
+  return getPostEntries(isBlog).find((entry) => entry.slug === slug);
 }

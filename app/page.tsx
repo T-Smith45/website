@@ -49,7 +49,11 @@ export default function Home() {
             <WorkSection
               key={entry.slug}
               linkText={entry.title}
-              linkUrl={entry.postPage ? `/work/${entry.slug}/` : entry.link}
+              linkUrl={
+                entry.postPage
+                  ? `/${entry.isBlog ? "blog" : "work"}/${entry.slug}/`
+                  : entry.link
+              }
               imgUrl={entry.image}
               imageAlt={entry.imageAlt}
             />
