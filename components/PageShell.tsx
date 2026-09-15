@@ -4,9 +4,14 @@ import Link from "next/link";
 type PageShellProps = {
   title: string;
   children: ReactNode;
+  wide?: boolean;
 };
 
-export default function PageShell({ title, children }: PageShellProps) {
+export default function PageShell({
+  title,
+  children,
+  wide = false,
+}: PageShellProps) {
   return (
     <main className="min-h-dvh text-black min-[835px]:p-0.5">
       <section className="relative isolate min-h-dvh overflow-hidden min-[835px]:min-h-[calc(100dvh-0.25rem)] min-[835px]:rounded-2xl min-[835px]:p-4 lg:p-6">
@@ -15,7 +20,13 @@ export default function PageShell({ title, children }: PageShellProps) {
           className="absolute inset-0 -z-10 hidden bg-[#FAF9F6] brightness-45 min-[835px]:block"
         />
 
-        <div className="mx-auto min-h-dvh w-full bg-[#FAF9F6] px-4 pb-6 pt-2 sm:px-8 sm:pb-10 sm:pt-3 min-[835px]:min-h-0 min-[835px]:max-w-3xl min-[835px]:rounded-2xl lg:px-12 lg:pb-14 lg:pt-4">
+        <div
+          className={`mx-auto min-h-dvh w-full bg-[#FAF9F6] px-4 pb-6 pt-2 sm:pb-10 sm:pt-3 min-[835px]:min-h-0 min-[835px]:rounded-2xl lg:pb-14 lg:pt-4 ${
+            wide
+              ? "sm:px-6 min-[835px]:max-w-6xl lg:px-8"
+              : "sm:px-8 min-[835px]:max-w-3xl lg:px-12"
+          }`}
+        >
           <header className="flex min-w-0 items-center gap-3 sm:gap-5">
             <span aria-hidden="true" className="dot" />
             <h1 className="min-w-0 flex-1 break-words text-center text-3xl leading-tight sm:text-4xl lg:text-5xl">
@@ -30,7 +41,11 @@ export default function PageShell({ title, children }: PageShellProps) {
             </Link>
           </div>
 
-          <div className="mt-8 min-w-0 break-words px-7 [&_img]:max-w-full sm:mt-10 sm:px-9">
+          <div
+            className={`mt-8 min-w-0 break-words [&_img]:max-w-full sm:mt-10 ${
+              wide ? "px-0 sm:px-2" : "px-7 sm:px-9"
+            }`}
+          >
             {children}
           </div>
         </div>

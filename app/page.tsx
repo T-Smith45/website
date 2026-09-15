@@ -28,13 +28,16 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid min-h-0 grid-rows-[auto_1fr] overflow-hidden rounded-2xl bg-[#FAF9F6] pt-1 min-[835px]:col-start-1 min-[835px]:row-start-2 min-[835px]:mr-0.5 min-[835px]:block">
+        <div className="grid min-h-0 grid-rows-[auto_1fr] overflow-hidden rounded-2xl bg-[#FAF9F6] pt-1 min-[835px]:col-start-1 min-[835px]:row-start-2 min-[835px]:mr-0.5">
           <CardTitle title="Contact" />
-          <div className="grid self-center grid-cols-1 gap-y-0.5 px-4 text-black min-[430px]:gap-y-4 min-[835px]:gap-y-6 min-[835px]:px-0 min-[835px]:pt-6">
-            <BtnLink title="Twitter/X" />
-            <BtnLink title="Linkedin" />
-            <BtnLink title="Email" />
-            <BtnLink title="Youtube?" />
+          <div className="min-h-0 overflow-y-auto overscroll-contain">
+            <div className="grid min-h-full grid-cols-1 content-center gap-y-0.5 px-4 py-2 text-black min-[430px]:gap-y-4 min-[835px]:gap-y-6 min-[835px]:px-0 min-[835px]:py-4">
+              <BtnLink title="Twitter/X" />
+              <BtnLink title="Linkedin" />
+              <BtnLink title="Email" />
+              <BtnLink title="Youtube?" />
+              <BtnLink title="Work & Writing" url="/posts/" />
+            </div>
           </div>
         </div>
       </section>

@@ -47,6 +47,8 @@ isBlog: false
 
 Put local work images in `public/images/work/`. Use [`templates/work-post.md`](templates/work-post.md) as a starting point. Content changes require a new build.
 
+All entries also appear in the combined **Work & Writing** listing at `/posts/`, ordered newest first. The listing includes card-only entries as well as entries with generated detail pages.
+
 ## Build and preview
 
 Run `pnpm build` to parse the Markdown, generate the static export in `out/`, and create all opted-in work and blog pages. Use `pnpm dev` and [http://localhost:3000](http://localhost:3000) for local preview. The generated `out/` directory is intended for static hosting; `next start` is not compatible with `output: "export"`.
@@ -82,6 +84,8 @@ export default function ExamplePage() {
 │   ├── globals.css    # Global styles
 │   ├── favicon.ico    # Site favicon
 │   ├── blog/[[...slug]]/ # Static Markdown blog pages
+│   │   └── page.tsx
+│   ├── posts/         # Combined Work & Writing listing
 │   │   └── page.tsx
 │   └── work/[[...slug]]/ # Static Markdown work pages
 │       └── page.tsx

@@ -9,7 +9,7 @@ export default function BtnLink({ title, url = "#" }: BtnLinkProps) {
   return (
     <a
       href={url}
-      className="group relative flex h-11 items-center justify-center overflow-hidden rounded-3xl border-2 px-2 text-lg min-[835px]:mx-8 min-[835px]:h-auto min-[835px]:min-h-11 min-[835px]:py-2 min-[835px]:text-xl"
+      className="group relative flex h-11 items-center justify-center overflow-hidden rounded-3xl border-2 px-2 text-lg min-[835px]:mx-2 min-[835px]:h-auto min-[835px]:min-h-11 min-[835px]:py-2 min-[835px]:text-base xl:mx-8 xl:text-xl"
     >
       <span className="block text-center transition-transform duration-200 ease-in-out group-hover:-translate-x-5">
         {title}
